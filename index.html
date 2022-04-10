@@ -100,7 +100,7 @@
                         var feature9 = document.getElementById("feature9").value;
                         var feature10 = document.getElementById("feature10").value;
                         var http = new XMLHttpRequest();
-                        http.open("POST", "api/azuredl", true);
+                        http.open("POST", "api/dlinsurance", true);
                         http.setRequestHeader("Content-Type", "application/json");
                         http.onreadystatechange = function () {
                             if (http.readyState == 4 && http.status == 200) {
