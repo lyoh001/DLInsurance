@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <link href="app/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>AzureDL</title>
+</head>
+
+<body>
+    <header id="header">
+        <h1><b>DEEP</b> LEARNING</h1>
+        <hr>
+        A Multi-class Classification Prediction Model powered by Deep Neural Network
+        <hr>
+    </header>
+    <main>
+        <article id="mainLeft">
+            <section>
+                <h2>NOTEBOOK</h2>
+                <p>
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <a
+                        href="https://github.com/lyoh001/AzureDL/blob/main/notebook/notebook.ipynb">github.com/lyoh001/AzureDL/blob/main/notebook/notebook.ipynb</a>
+                </p>
+            </section>
+            <section>
+                <h2>DATASET</h2>
+                <p>
+                    <i class="fab fa-kaggle" aria-hidden="true"></i>
+                    <a
+                        href="https://www.kaggle.com/datasets/arshid/iris-flower-dataset">kaggle.com/datasets/arshid/iris-flower-dataset</a>
+                </p>
+                <p></p>
+            </section>
+            <section>
+                <h2>SKILLS</h2>
+                <p>Python, Machine Learning, Deep Learning, DevOps, MLOps, IaC, AWS, Azure</p>
+            </section>
+            <section>
+                <h2>CONTACT</h2>
+                <p>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <a href="mailto:lyoh001@hotmail.com">lyoh001@hotmail.com</a>
+                </p>
+                <p>
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <a href="https://github.com/lyoh001">github.com/lyoh001</a>
+                </p>
+                <p>
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    <a href="https://linkedin.com/lyoh001">linkedin.com/lyoh001</a>
+                </p>
+            </section>
+        </article>
+        <article id="mainRight">
+            <section>
+                <h2>ABOUT</h2>
+                <p>The Iris flower data set is a multivariate data set introduced by the British statistician and
+                    biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems. It
+                    is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify
+                    the morphologic variation of Iris flowers of three related species. The data set consists of 50
+                    samples from each of three species of Iris (Iris Setosa, Iris virginica, and Iris versicolor). Four
+                    features were measured from each sample: the length and the width of the sepals and petals, in
+                    centimeters.
+
+                    This dataset became a typical test case for many statistical classification techniques in machine
+                    learning such as support vector machines.
+                </p>
+            </section>
+            <section>
+                <h2>PREDICTION</h2>
+                <h3><b>FEATURES</b></h3>
+                <p>
+                    These are the features of the model that will be used to make a prediction.
+                </p>
+                <ul>
+                    <li>sepal length (cm): <input id="feature1"></li>
+                    <li>sepal width (cm): <input id="feature2"></li>
+                    <li>petal length (cm): <input id="feature3"></li>
+                    <li>petal width (cm): <input id="feature4"></li>
+                    <button onclick="predict();">predict</button>
+                </ul>
+                <p>Prediction: <b id="prediction">...</b></p>
+                <p>0: setosa, 1: versicolor, 2: virginica</p>
+                <script>
+                    function predict() {
+                        var feature1 = document.getElementById("feature1").value;
+                        var feature2 = document.getElementById("feature2").value;
+                        var feature3 = document.getElementById("feature3").value;
+                        var feature4 = document.getElementById("feature4").value;
+                        var http = new XMLHttpRequest();
+                        http.open("POST", "api/azuredl", true);
+                        http.setRequestHeader("Content-Type", "application/json");
+                        http.onreadystatechange = function () {
+                            if (http.readyState == 4 && http.status == 200) {
+                                var response = http.responseText
+                                document.getElementById("prediction").innerHTML = response;
+                            }
+                        }
+                        http.send(JSON.stringify({ "sepal length (cm)": [feature1], "sepal width (cm)": [feature2], "petal length (cm)": [feature3], "petal width (cm)": [feature4] }));
+                    }
+                </script>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
