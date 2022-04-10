@@ -20,7 +20,7 @@
                 <p>
                     <i class="fab fa-github" aria-hidden="true"></i>
                     <a
-                        href="https://github.com/lyoh001/AzureDL/blob/main/notebook/notebook.ipynb">github.com/lyoh001/AzureDL/blob/main/notebook/notebook.ipynb</a>
+                        href="https://github.com/lyoh001/DLInsurance/blob/main/notebook/notebook.ipynb">github.com/lyoh001/DLInsurance/blob/main/notebook/notebook.ipynb</a>
                 </p>
             </section>
             <section>
@@ -28,7 +28,7 @@
                 <p>
                     <i class="fab fa-kaggle" aria-hidden="true"></i>
                     <a
-                        href="https://www.kaggle.com/datasets/arshid/iris-flower-dataset">kaggle.com/datasets/arshid/iris-flower-dataset</a>
+                        href="https://www.kaggle.com/datasets/sureshmecad/health-insurance-lead-prediction">kaggle.com/datasets/sureshmecad/health-insurance-lead-prediction</a>
                 </p>
                 <p></p>
             </section>
@@ -55,16 +55,15 @@
         <article id="mainRight">
             <section>
                 <h2>ABOUT</h2>
-                <p>The Iris flower data set is a multivariate data set introduced by the British statistician and
-                    biologist Ronald Fisher in his 1936 paper The use of multiple measurements in taxonomic problems. It
-                    is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify
-                    the morphologic variation of Iris flowers of three related species. The data set consists of 50
-                    samples from each of three species of Iris (Iris Setosa, Iris virginica, and Iris versicolor). Four
-                    features were measured from each sample: the length and the width of the sepals and petals, in
-                    centimeters.
-
-                    This dataset became a typical test case for many statistical classification techniques in machine
-                    learning such as support vector machines.
+                <p>Your Client FinMan is a financial services company that provides various financial services like
+                    loan, investment funds, insurance etc. to its customers. FinMan wishes to cross-sell health
+                    insurance to the existing customers who may or may not hold insurance policies with the company. The
+                    company recommend health insurance to it's customers based on their profile once these customers
+                    land on the website. Customers might browse the recommended health insurance policy and consequently
+                    fill up a form to apply. When these customers fill-up the form, their Response towards the policy is
+                    considered positive and they are classified as a lead.
+                    Once these leads are acquired, the sales advisors approach them to convert and thus the company can
+                    sell proposed health insurance to these leads in a more efficient manner.
                 </p>
             </section>
             <section>
@@ -74,20 +73,32 @@
                     These are the features of the model that will be used to make a prediction.
                 </p>
                 <ul>
-                    <li>sepal length (cm): <input id="feature1"></li>
-                    <li>sepal width (cm): <input id="feature2"></li>
-                    <li>petal length (cm): <input id="feature3"></li>
-                    <li>petal width (cm): <input id="feature4"></li>
+                    <li>City Code: <input id="feature1"></li>
+                    <li>Accomodation Type: <input id="feature2"></li>
+                    <li>Reco Insurance Type: <input id="feature3"></li>
+                    <li>Upper Age: <input id="feature4"></li>
+                    <li>Lower Age: <input id="feature5"></li>
+                    <li>Is_Spouse: <input id="feature6"></li>
+                    <li>Health Indicator: <input id="feature7"></li>
+                    <li>Holding Policy Duration: <input id="feature8"></li>
+                    <li>Holding Policy Type: <input id="feature9"></li>
+                    <li>Reco Policy Catalogue: <input id="feature10"></li>
                     <button onclick="predict();">predict</button>
                 </ul>
-                <p>Prediction: <b id="prediction">...</b></p>
-                <p>0: setosa, 1: versicolor, 2: virginica</p>
+                <p></p>
+                <p>Prediction: $<b id="prediction">...</b></p>
                 <script>
                     function predict() {
                         var feature1 = document.getElementById("feature1").value;
                         var feature2 = document.getElementById("feature2").value;
                         var feature3 = document.getElementById("feature3").value;
                         var feature4 = document.getElementById("feature4").value;
+                        var feature5 = document.getElementById("feature5").value;
+                        var feature6 = document.getElementById("feature6").value;
+                        var feature7 = document.getElementById("feature7").value;
+                        var feature8 = document.getElementById("feature8").value;
+                        var feature9 = document.getElementById("feature9").value;
+                        var feature10 = document.getElementById("feature10").value;
                         var http = new XMLHttpRequest();
                         http.open("POST", "api/azuredl", true);
                         http.setRequestHeader("Content-Type", "application/json");
@@ -97,7 +108,7 @@
                                 document.getElementById("prediction").innerHTML = response;
                             }
                         }
-                        http.send(JSON.stringify({ "sepal length (cm)": [feature1], "sepal width (cm)": [feature2], "petal length (cm)": [feature3], "petal width (cm)": [feature4] }));
+                        http.send(JSON.stringify({ "City_Code": [feature1], "Accomodation_Type": [feature2], "Reco_Insurance_Type": [feature3], "Upper_Age": [feature4], "Lower_Age": [feature5], "Is_Spouse": [feature6], "Health Indicator": [feature7], "Holding_Policy_Duration": [feature8], "Holding_Policy_Type": [feature9], "Reco_Policy_Cat": [feature10] }));
                     }
                 </script>
             </section>
