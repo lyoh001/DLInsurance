@@ -15,9 +15,12 @@ This MLOps workflow covering Deep Learning model prediction written with Tensorf
 ## 2 Logical Architecture
 ### 2.1	Logical System Component Overview
 ![Figure 1: Logical Architecture Overview](./.images/workflow.png)
-- Azure Static Web Apps gets deployed via IaC (Azure Bicep)
-- Code gets pushed to Github via integrated into the pipeline
-- [DL Notebooks](https://github.com/lyoh001/DLInsurance/blob/main/notebook/notebook.ipynb) gets trained and deployed to Azure Functions
+- Data gets pulled from Azure MySQL server to AWS Sagemaker Studio lab for EDA and model building.
+- Building ML and DL models and export out for later consumption (ML/DL as service via API).
+- Notebook and model pkl file gets pushed to github repo for building Azure Static Web app via CICD pipeline.
+- [DL Notebooks](https://github.com/lyoh001/DLInsurance/blob/main/notebook/notebook.ipynb) 
+- Model gets invoked via API call backed by Azure Function.
+- The end users can consume ML as a service via Webapp.
 
 ## 3 Prediction Link
 Ref: [DL](https://gentle-smoke-0b89c3c10.1.azurestaticapps.net/)
