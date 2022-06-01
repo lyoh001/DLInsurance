@@ -1,4 +1,4 @@
-# Yohan John Lee's MLOps Workflow
+# MLOps Workflow
 ## 1. Introduction
 ### 1.1	Overview
 
@@ -22,8 +22,11 @@ This MLOps workflow covering Deep Learning model prediction written with Tensorf
 - Model gets invoked via API call backed by Azure Function.
 - The end users can consume ML as a service via Webapp.
 
-## 3 Prediction Link
+## 3 Power BI Dashboard for Visualization
+![Figure 1: Logical Architecture Overview](./.images/powerbi.png)
+
+## 4 Azure Static Web App for ML Prediction Demo
 Ref: [DL](https://gentle-smoke-0b89c3c10.1.azurestaticapps.net/)
 
-## 3 MSDocs Link
+## 5 MSDocs Link
 Ref: [MSDocs](https://docs.microsoft.com/en-us/azure/static-web-apps/functions-bring-your-own/)
